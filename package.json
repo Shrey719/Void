@@ -10,6 +10,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.15.4"
+    "astro": "^4.15.4",
+    "chemicaljs": "^1.8.2",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   }
 }

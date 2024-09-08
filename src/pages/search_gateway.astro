@@ -1,0 +1,47 @@
+---
+import Header from "../components/Header.astro"
+---
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="/chemical.js" is:inline></script>
+    <title>Classes</title>
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            color:white;
+            overflow: hidden;
+
+        }
+
+        .uvframe {
+            border: none;
+            outline: none;
+            position: absolute;
+            border-radius: 10px;
+            height: 95vh;
+            width: 100vw;
+            z-index: 20;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+<Header/>
+<iframe class="uvframe" id="frame"></iframe>
+
+</body>
+<script>
+    addEventListener("DOMContentLoaded", async () => {
+        const frame = document.getElementById('frame')
+        const url =  localStorage.getItem('prox_url')
+        frame.src = url
+    });
+</script>
+</html>

@@ -1,0 +1,49 @@
+<script src="/chemical.js" is:inline></script>
+<div class="centered">
+<input class="search" id = "search" type="text" placeholder="Search the web" 
+onclick=`document.getElementById('search').placeholder = ""`
+autocomplete = off
+autocapitalize="off"
+autocorrect = off
+> </input>
+</div>
+<script>
+ 	document.getElementById("search").addEventListener("keydown", async function (e) {
+			if (e.key == "Enter" && chemical.loaded && e.target.value) {
+		  localStorage.setItem("prox_url",await chemical.encode(e.target.value));
+      location.href = "/search_gateway"
+	}
+});
+</script>
+<style>
+.search {
+    padding: 1rem;
+    border: none;
+    border-radius: 1rem;
+    margin-bottom: 10rem;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.5rem;
+    color: white;
+    background-color: #696969;
+}
+.search::placeholder {
+    color: white;
+    opacity: 1;
+}
+.search::-ms-input-placeholder { /*Ewww edge support*/
+  color: white;
+}
+.search:hover {
+  background-color: #a3a3a3;
+  -webkit-transition: 0.2s ease-in;
+}
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+</style>
