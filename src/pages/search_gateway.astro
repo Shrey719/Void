@@ -1,7 +1,3 @@
----
-import Header from "../components/Header.astro"
----
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,11 +5,13 @@ import Header from "../components/Header.astro"
     <title>Classes</title>
 
     <style>
+        *{
+            background-color: rgb(41, 41, 41);
+        }
         html, body {
             margin: 0;
             padding: 0;
             height: 100%;
-            color:white;
             overflow: hidden;
 
         }
@@ -30,18 +28,66 @@ import Header from "../components/Header.astro"
             bottom: 0;
             right: 0;
         }
+
+        .topBar {
+            height: 5vh;
+            color: black;
+            background-color: rgb(41, 41, 41);
+            width: 100vw;
+        }
+        .topBar a {
+            text-decoration: none;
+        }
+        .url_bar {
+            color: white;
+            background-color: !important rgb(41, 41, 41,);
+            width: 90vw;
+            height: 5vh;
+            border-radius: 2rem;
+            border: none;
+            padding: 0.5rem;
+        }
+        .url_bar:hover, .url_bar:focus {
+            outline-width: 0;
+            background-color: rgb(17, 17, 17) !important;
+            mask-border-width: 0;
+        }
+        .header_home {
+            padding: 3px;
+            margin-right: 5vw;
+        }
     </style>
 </head>
 <body>
-<Header/>
-<iframe class="uvframe" id="frame"></iframe>
-
+<div class="topBar" id="topBar"> <!--Searchbar and things-->
+    <a class="header_home" href="/"><img src="/assets/img/home.png" height="20vh" width="20vw"></img></a>
+    <input class="url_bar" type="text" id="inputBar" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false"> 
+</div>
+<iframe class="uvframe" id="frame"></iframe> <!--Me when chemicalJS only works iframed: -->
 </body>
 <script>
     addEventListener("DOMContentLoaded", async () => {
-        const frame = document.getElementById('frame')
-        const url =  localStorage.getItem('prox_url')
-        frame.src = url
+        const frame = document.getElementById('frame');
+        const url =  localStorage.getItem('prox_url');         
+        frame.src = url  
+        window.addEventListener("chemicalLoaded", async (e) =>  {
+            if (localStorage.getItem('prox_backend') == "Rammerhead") {
+                setTimeout(async () => {
+                document.getElementById("inputBar").value =  await chemical.decode(document.getElementById("frame").contentWindow.window.location.pathname.replace("/~/uv/", ""))
+            }, 2500) 
+            return;
+            } 
+            setTimeout(async () => {
+                document.getElementById("inputBar").value =  await __uv$config.decodeUrl(document.getElementById("frame").contentWindow.window.location.pathname.replace("/~/uv/", ""))
+            }, 3000) 
+        });
     });
+    document.getElementById("inputBar").addEventListener("keydown", async (e) => {
+        if (e.code == "Enter") {         // wonderful mobile support i know 
+            e.preventDefault();
+            document.getElementById("frame").src = window.location.origin + "~/uv/" + await chemical.encode(document.getElementById("inputBar").value) + "/" 
+            document.getElementById('frame').contentWindow.location.reload();
+        }
+    })
 </script>
 </html>

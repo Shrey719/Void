@@ -5,3 +5,5 @@ self.htmlConfig = {
     searchPath: "/",
     appsPath: "/apps",
 }
+
+const __void$version = "4.0" 

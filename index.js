@@ -9,7 +9,7 @@ const [app, listen] = new ChemicalServer({
     rammerhead: true,
 }
 );
-const port = process.env.PORT || 8081; // REMEBER TO CHANGE FOR RELEASE
+const port = process.env.PORT || 8080; 
 
 app.use(express.static("dist"));
 

@@ -10,7 +10,18 @@ autocorrect = off
 <script>
  	document.getElementById("search").addEventListener("keydown", async function (e) {
 			if (e.key == "Enter" && chemical.loaded && e.target.value) {
-		  localStorage.setItem("prox_url",await chemical.encode(e.target.value));
+      if (localStorage.getItem("prox_backend") == "rammerhead") {
+        localStorage.setItem("prox_url",await chemical.encode(e.target.value, {
+          service: "rammerhead",
+          searchEngine: "https://www.google.com/search?q=%s"
+        }));
+        location.href = "/search_gateway"
+        return
+      }
+		  localStorage.setItem("prox_url",await chemical.encode(e.target.value,  {
+          service: "uv",
+          searchEngine: "https://www.google.com/search?q=%s"
+        }));
       location.href = "/search_gateway"
 	}
 });
