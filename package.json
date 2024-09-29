@@ -1,5 +1,5 @@
 {
-  "name": "cosmic-cycle",
+  "name": "void",
   "type": "module",
   "version": "4.0",
   "scripts": {
@@ -10,9 +10,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.15.4",
-    "chemicaljs": "^1.8.2",
-    "express": "^4.19.2"
+    "astro": "^4.15.9",
+    "chemicaljs": "^1.8.6",
+    "express": "^4.19.2",
+    "npm": "^10.8.3"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
