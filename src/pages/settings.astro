@@ -8,15 +8,50 @@ import Footer from "../components/Footer.astro"
 <Header />
 <Footer />
 <head>
+	<script is:inline>
+		function setFromLocalStorage() {
+			if (localStorage.getItem("cloaking") == "true") {
+				document.getElementById('cloakingCbox').checked = true
+			}
+		}
+		function setCloaking() {
+			if (localStorage.getItem("cloaking") == "true") {
+				localStorage.setItem("cloaking", "false");
+			} else {
+				localStorage.setItem("cloaking", "true");
+			}
+
+		}
+		window.addEventListener("load", setFromLocalStorage)
+	</script>
 	<style>
 	@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 	
 	*{
-			font-family: "Be Vietnam Pro", sans-serif;
+		font-family: "Be Vietnam Pro", sans-serif;
 	}
 
-	body {
+	body, html {
 		background-color: rgb(56, 56, 56);
+	}
+	.arrow_down {
+		border: solid white;
+  		border-width: 0 3px 3px 0;
+  		display: inline-block;
+		padding: 3px;
+		transform: rotate(45deg);
+	    -webkit-transform: rotate(45deg);
+		margin-left: 0.5rem;
+
+	}
+		/* Hacky fix, i know */
+	.container {
+		margin-bottom: 5vh;
+		display: flex;
+		flex-direction: row;
+        align-items: flex-start;
+        align-content: flex-start;
+        flex-wrap: wrap;
 	}
 	.card {
 		background-color: rgb(50, 50, 50);
@@ -24,8 +59,7 @@ import Footer from "../components/Footer.astro"
 		height: 15rem; 
 		width: 15rem;
 		padding: 0.5rem;
-		margin-right: 0.5rem;
-		margin-left: 0.5rem;
+		margin: 0.5rem;
 		border-radius: 0.5rem;
 	}
 	.switch {
@@ -51,8 +85,8 @@ import Footer from "../components/Footer.astro"
 	  background-color: #ccc;
 	  -webkit-transition: .4s;
 	  transition: .4s;
+	  border-radius: 34px;
 	}
-	
 	.slider:before {
 	  position: absolute;
 	  content: "";
@@ -63,6 +97,7 @@ import Footer from "../components/Footer.astro"
 	  background-color: white;
 	  -webkit-transition: .4s;
 	  transition: .4s;
+	  border-radius: 50%;
 	}
 	
 	input:checked + .slider {
@@ -78,25 +113,63 @@ import Footer from "../components/Footer.astro"
 	  -ms-transform: translateX(26px);
 	  transform: translateX(26px);
 	}
-	
-	/* Rounded sliders */
-	.slider.round {
-	  border-radius: 34px;
+	.dropdown {
+		position: relative;
+		display: inline-block;
 	}
-	
-	.slider.round:before {
-	  border-radius: 50%;
+
+	.dropdown-content {
+		border-radius: 0.5rem;
+		display: none;
+		position: absolute;
+		background-color: #f9f9f9;
+		min-width: 160px;
+		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		padding: 12px 16px;
+		z-index: 1;
+		background-color: rgb(41, 41, 41);
+	}
+
+	.dropdown:hover .dropdown-content {
+		display: block;
+	}
+	.dropdown-content a:hover {
+		background-color: rgb(32, 32, 32);
+	}
+	.dropdown-content a {
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+		padding-top: 0.1rem;
+		padding-bottom: 0.1rem;
+		text-decoration: none;
+		border-radius: 0.5rem;
+		color: white;
 	}
 	</style>
 	</head>
 	<body>
-
+		<div class="container">
 	<div class="card">
 		<p>About blank cloaking</p>
 	<label class="switch">
-	  <input type="checkbox" checked>
-	  <span class="slider round"></span>
+	  <input type="checkbox" onclick="setCloaking()" id="cloakingCbox">
+	  <span class="slider"></span>
 	</label>
 	</div>
+
+
+	<div class="card">
+		<p>Search engine</p>
+		<div class="dropdown">
+			<span>Select <i class="arrow_down"></i></span>
+			<div class="dropdown-content">
+				<a href=`javascript:localStorage.setItem("prox_backend", "UV")`>Ultraviolet</a>
+				<a href=`javascript:localStorage.setItem("prox_backend", "rammerhead")`>Rammerhead</a>
+			</div>			  
+		</div>
+	</div>
+	</div>
+
+
 	</body>	
 </html>

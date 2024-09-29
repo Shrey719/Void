@@ -72,7 +72,7 @@
         const url =  localStorage.getItem('prox_url');         
         frame.src = url  
         window.addEventListener("chemicalLoaded", async (e) =>  {
-            if (localStorage.getItem('prox_backend') == "Rammerhead") {
+            if (localStorage.getItem('prox_backend') == "rammerhead") {
                 setTimeout(async () => {
                 document.getElementById("inputBar").value =  await chemical.decode(document.getElementById("frame").contentWindow.window.location.pathname.replace("/~/uv/", ""))
             }, 2500) 
