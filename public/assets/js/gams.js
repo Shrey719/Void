@@ -112,7 +112,7 @@ let __games = [
     {
       "name": "Adventure Capitalist",
       "img": "https://imgs.search.brave.com/Ktu4z-WtD6OvZ1Bov2vVGLmCnTP5XtpcKGvUMoEzPKI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvZW4vdGh1bWIv/MS8xMy9BZFZlbnR1/cmVfQ2FwaXRhbGlz/dF8lMjgyMDE0X3Zp/ZGVvX2dhbWUlMjku/cG5nLzUxMnB4LUFk/VmVudHVyZV9DYXBp/dGFsaXN0XyUyODIw/MTRfdmlkZW9fZ2Ft/ZSUyOS5wbmc",
-      "href": "https://funnyshooter.github.io"
+      "href": "https://en.gameslol.net/data/adcapitalist/index.html"
     },
     {
       "name": "Hole.io",
@@ -148,6 +148,11 @@ let __games = [
       "name" : "Suika Game", 
       "img": "https://suikagame.io/cache/data/image/options/suikagame-favicon-m144x144.png",
       "href": "https://suikagame.com/"
+    }, 
+    {
+      "name": "Slow Roads", 
+      "img": "https://slowroads.io/favicon_circle.svg",
+      "href": "https://slowroads.io"
     }
   ]
 

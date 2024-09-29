@@ -1,10 +1,9 @@
 # Build 
 npm run build 
 
-# Run 
+# Run (Production)
 node index.js 
 
-# Run (devs)
+# Run (Proxy dosent work, neither does games)
 npm run start
 
-# Good luck figuring out my shitty code lol
