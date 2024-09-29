@@ -2,7 +2,7 @@
 npm run build 
 
 # Run (Production)
-npm run build
+npm run build     
 node index.js 
 
 # Run (Developer)
