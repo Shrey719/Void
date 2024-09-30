@@ -168,7 +168,7 @@ let __games = [
       // And no personal information will be sent in games
       // So its ok to use rammerhead
       // For better support 
-      g.setAttribute('onclick', "localStorage.setItem('prox_url', '" + await chemical.encode(ga.href, {service: "rammerhead"}) + "'); window.location.href = '/search_gateway'")
+      g.setAttribute('onclick', "localStorage.setItem('prox_url', '" + await chemical.encode(ga.href, {service: "uv"}) + "'); window.location.href = '/search_gateway'")
       const gimg = document.createElement('button')
       const gimage = document.createElement('img')
       
